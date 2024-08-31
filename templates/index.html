@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body background="download.png" onload="myFunction()">
+    <div class="container">
+        <h1>Uber Price Prediction</h1>
+        <form action="/predictdata" method="POST">
+            <div class="form-group">
+                <label for="Current_Location">Current Location:</label>
+                <select name="Current_Location" id="Current_Location" required>
+                    <option value="Back Bay">Back Bay</option>
+                    <option value="Beacon Hill">Beacon Hill</option>
+                    <option value="Boston University">Boston University</option>
+                    <option value="Fenway">Fenway</option>
+                    <option value="Financial District">Financial District</option>
+                    <option value="Haymarket Square">Haymarket Square</option>
+                    <option value="North End">North End</option>
+                    <option value="North Station">North Station</option>
+                    <option value="Northeastern University">Northeastern University</option>
+                    <option value="South Station">South Station</option>
+                    <option value="Theatre District">Theatre District</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Destination">Destination:</label>
+                <select name="Destination" id="Destination" required>
+                    <option value="Back Bay">Back Bay</option>
+                    <option value="Beacon Hill">Beacon Hill</option>
+                    <option value="Boston University">Boston University</option>
+                    <option value="Fenway">Fenway</option>
+                    <option value="Financial District">Financial District</option>
+                    <option value="Haymarket Square">Haymarket Square</option>
+                    <option value="North End">North End</option>
+                    <option value="North Station">North Station</option>
+                    <option value="Northeastern University">Northeastern University</option>
+                    <option value="South Station">South Station</option>
+                    <option value="Theatre District">Theatre District</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Car_type">Car Type:</label>
+                <select name="Car_type" id="Car_type" required>
+                    <option value="Black">Black</option>
+                    <option value="Black SUV">Black SUV</option>
+                    <option value="UberPool">UberPool</option>
+                    <option value="UberX">UberX</option>
+                    <option value="UberXL">UberXL</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Rain_level">Rain Level (in inches):</label>
+                <input type="number" step="0.01" name="Rain_level" id="Rain_level" required>
+            </div>
+            <button type="submit">Predict Price</button>
+        </form>
+        {% if results %}
+            <div class="result">
+                <h2>Predicted Price: ${{ results }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
